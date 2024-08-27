@@ -15,3 +15,11 @@
 <img width="873" alt="image" src="https://github.com/user-attachments/assets/40ee75f3-b8f1-4018-a9f0-41b0d2cd5f7d">
 
 <img width="916" alt="image" src="https://github.com/user-attachments/assets/68957fb5-718b-427a-b099-1d7993f7960c">
+
+## Hardware
+1. CPU(Central Processing Unit):CPU是工人，负责执行计算机程序中的指令，进行数据处理和计算。<br>
+注：现代计算机通常有多个CPU，设置CPU count就是设置分配给虚拟机的CPU数量。<br>
+2. RAM(Random Access Memory)(内存):内存是CPU的工作区，用于暂时存储当前正在使用的操作系统、应用程序和数据。当程序结束或设备断电时，内存将会被清空。<br>
+注：在创建虚拟机时，设置RAM就是设置Base Memory。<br>
+3. HDD（Hard Disk Drive）（硬盘）：硬盘是CPU的档案库，用于长期存储操作系统、应用程序和数据。<br>
+*Hard Disk File: 
