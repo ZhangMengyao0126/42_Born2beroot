@@ -1,7 +1,7 @@
 # 42_Born2beroot
 ## Virtual Machine
 ### What is a Virtual Machine
-<img width="897" alt="image" src="https://github.com/user-attachments/assets/258ff23b-ec7a-445d-822d-1042a48de7cb">
+<img width="897" alt="image" src="https://github.com/user-attachments/assets/258ff23b-ec7a-445d-822d-1042a48de7cb"><br>
 *Virtual machines are completely isolated. This means, that if something breaks inside the VM, it doesn't affect the host machine.
 
 ### Why do we need a Virtual Machine
