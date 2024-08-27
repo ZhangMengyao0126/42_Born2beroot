@@ -22,4 +22,19 @@
 2. RAM(Random Access Memory)(内存):内存是CPU的工作区，用于暂时存储当前正在使用的操作系统、应用程序和数据。当程序结束或设备断电时，内存将会被清空。<br>
 注：在创建虚拟机时，设置RAM就是设置Base Memory。<br>
 3. HDD（Hard Disk Drive）（硬盘）：硬盘是CPU的档案库，用于长期存储操作系统、应用程序和数据。<br>
-*Hard Disk File: 
+*Hard Disk File: 虚拟硬盘文件，用于模拟一个物理硬盘的功能，用于长期存储操作系统、应用程序和数据。不同的类型只是因为适用于不同的Hypervisor平台：<br>
+(1)VDI (VirtualBox Disk Image) - Oracle VirtualBox
+(2)VHD (Virtual Hard Disk) - Microsoft Hyper-V
+(3)VMDK (Virtual Machine Disk) - Virtual Machine Disk
+
+## Debian
+一款以稳定著称的Linux发行版。Linux发行版，指在Linux内核的基础上构建，添加了各种应用程序、工具和管理工具，形成完整操作系统环境的操作系统版本。<br>
+
+## Locale
+一组用于配置计算机系统语言、文化习惯和格式设置的参数。en_US.UTF-8：en：语言（英语）；US：地区（美国）；UTF-8：字符编码<br>
+
+## URL & Domain name
+网址（URL）:是用于指定互联网上某一资源的位置的完整地址。<br>
+Domain name(域名)：（域名）是互联网上用于标识网站的易记名称，它与 IP 地址关联，帮助用户通过人类友好的方式（而不是IP地址的一大串数字）访问特定网站。<br>
+Domain name(域名)是URL(Uniform Resource Locator)(网址)的一部分。<br>
+Eg. https://www.example.com/about?lang=en 是一个完整的 URL，其中：https:// 是协议，www.example.com 是域名，/about 是路径，?lang=en 是查询参数。
