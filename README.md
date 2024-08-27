@@ -34,7 +34,14 @@
 一组用于配置计算机系统语言、文化习惯和格式设置的参数。en_US.UTF-8：en：语言（英语）；US：地区（美国）；UTF-8：字符编码<br>
 
 ## URL & Domain name
-网址（URL）:是用于指定互联网上某一资源的位置的完整地址。<br>
-Domain name(域名)：（域名）是互联网上用于标识网站的易记名称，它与 IP 地址关联，帮助用户通过人类友好的方式（而不是IP地址的一大串数字）访问特定网站。<br>
-Domain name(域名)是URL(Uniform Resource Locator)(网址)的一部分。<br>
+1. 网址（URL）:是用于指定互联网上某一资源的位置的完整地址。<br>
+2. Domain name(域名)：是互联网上用于标识网站的易记名称，它与 IP 地址关联，帮助用户通过人类友好的方式（而不是IP地址的一大串数字）访问特定网站。<br>
+3. Domain name(域名)是URL(Uniform Resource Locator)(网址)的一部分。<br>
 Eg. https://www.example.com/about?lang=en 是一个完整的 URL，其中：https:// 是协议，www.example.com 是域名，/about 是路径，?lang=en 是查询参数。
+
+## encrypted LVM
+1. encrypted: 启用加密后，只有使用正确的密码或密钥才能读取硬盘上的数据。<br>
+2. LVM（Logical Volume Manager，逻辑卷管理器）:LVM 是一种磁盘管理方法，允许灵活地分配硬盘空间。它将物理硬盘分区抽象成逻辑卷，用户可以更轻松地调整卷的大小或添加新的卷（没搞懂具体含义，但核心是逻辑卷可以动态调整大小）
+
+## GRUB
+GRUB（GRand Unified Bootloader）: 是一个广泛使用的启动加载程序。它负责在计算机启动时引导操作系统。GRUB 允许用户选择不同的操作系统或内核版本来启动。
