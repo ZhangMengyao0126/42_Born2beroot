@@ -45,3 +45,9 @@ Eg. https://www.example.com/about?lang=en 是一个完整的 URL，其中：http
 
 ## GRUB
 GRUB（GRand Unified Bootloader）: 是一个广泛使用的启动加载程序。它负责在计算机启动时引导操作系统。GRUB 允许用户选择不同的操作系统或内核版本来启动。
+
+## Sodu
+### sodu(Superuser do)
+允许普通用户临时以超级用户（root 用户）的身份执行命令。超级用户通常拥有系统上的所有权限，包括对系统文件和设置进行更改的能力。
+### su
+切换到 root 用户（超级用户），从而获得系统管理员权限。
