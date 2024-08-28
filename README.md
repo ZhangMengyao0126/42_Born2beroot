@@ -96,7 +96,7 @@ To check the current status of the SSH service.
 #### vim /etc/ssh/sshd_config
 sshd_config:sshdaemon_configuration,是 SSH 服务器的核心配置文件，控制着 SSH 服务器的各种行为。<br>
 d：daemon，守护进程，是一个在后台运行的计算机程序，通常不直接与用户交互，而是提供某种服务。例如，sshd 是一个负责处理所有传入 SSH 连接请求的守护进程。<br>
-##### About sshd_config
+#### About sshd_config
 1. Remove #: 启用配置项。在配置文件中，以 # 开头的行通常是注释行。这些行可能包含解释说明、默认配置的提示或被临时禁用的配置项。注释行不会对程序产生任何影响，因为它们不会被解析或执行。<br>
 2. Port：<br>
 (1)作用：在网络通信中，IP 地址用于标识一台设备（如计算机、服务器或路由器），而端口号用于标识设备上运行的特定应用程序或服务。端口通常对应某种特定的系统协议或服务。每个端口号与一种特定的网络服务或协议相关联，这使得计算机能够在同一个 IP 地址下区分不同的通信请求。<br>
