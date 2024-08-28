@@ -57,7 +57,7 @@ GRUB（GRand Unified Bootloader）: 是一个广泛使用的启动加载程序�
 Shell:是一种电脑系统与用户交互的命令行界面（CIL：Command-Line Interface），在图形用户界面（GUI：Graphical User Interface）出现前，它是我们操作电脑的主要方式。
 ### Bash Shell
 1. Bash Shell:是一种广泛应用于Unix/Linux操作系统的shell。
-2. Bash Prompt:在使用Bash时的提示符。
+2. Bash Prompt:在使用Bash时的提示符。<br>
 Eg. user@hostname:~$<br>
 user：当前登录的用户名。<br>
 hostname：计算机的主机名。<br>
