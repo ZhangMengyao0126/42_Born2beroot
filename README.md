@@ -64,3 +64,65 @@ hostname：计算机的主机名。<br>
 ~：当前工作目录（在用户的主目录时显示为 ~，否则会显示为相对路径）。<br>
 $：表示普通用户（如果是 #，则表示超级用户 root）。<br>
 
+## Shell Command
+### Basic
+#### apt install *toolsname(sudo/vim/nano)*
+apt: Advanced Package Tool，是Debian及其衍生版（Ubuntu）所使用的高级管理工具包。<br>
+install: apt的子命令。<br>
+sudo: superuser do工具，用于允许普通用户临时以超级用户（root 用户）的身份执行命令。<br>
+#### sudo apt update
+update the apt list（will not download any of them until the user asking to）
+#### sudo reboot
+sudo：允许普通用户临时以超级用户（root 用户）的身份执行命令。<br>
+reboot: 重启计算机。<br>
+#### sudo -V
+-V: equals to “sudo --version”,检查当前sudo工具的版本。
+#### sudo adduser *username*
+adduser: add an new user
+#### sudo addgroup *groupname*
+addgroup: add a new group.
+*GID: group identifier， in short, group ID
+#### sudo adduser *username* *groupname* 
+add the user *username* to the group *groupname*<br>
+*sudo is also a group.
+
+### SSH
+#### What is SSH?
+SSH: Secure Shell. The SSH protocol was designed as a secure alternative to unsecured remote shell protocols. It utilizes a client-server paradigm, in which clients and servers communicate via a secure channel.
+#### sudo apt install openssh-server
+To install the specific server for SSH.
+#### sudo service ssh status
+To check the current status of the SSH service.
+#### vim /etc/ssh/sshd_config
+sshd_config:sshdaemon_configuration,是 SSH 服务器的核心配置文件，控制着 SSH 服务器的各种行为。<br>
+d：daemon，守护进程，是一个在后台运行的计算机程序，通常不直接与用户交互，而是提供某种服务。例如，sshd 是一个负责处理所有传入 SSH 连接请求的守护进程。<br>
+##### About sshd_config
+1. Remove #: 启用配置项。在配置文件中，以 # 开头的行通常是注释行。这些行可能包含解释说明、默认配置的提示或被临时禁用的配置项。注释行不会对程序产生任何影响，因为它们不会被解析或执行。<br>
+2. Port：<br>
+(1)作用：在网络通信中，IP 地址用于标识一台设备（如计算机、服务器或路由器），而端口号用于标识设备上运行的特定应用程序或服务。端口通常对应某种特定的系统协议或服务。每个端口号与一种特定的网络服务或协议相关联，这使得计算机能够在同一个 IP 地址下区分不同的通信请求。<br>
+*修改了ssh的端口号就像我们把加密房间的门牌号改了，当黑客攻击的时候，其实他们攻击错了房间。<br>
+*所有协议的端口号理论上都可以修改，只是为了方便和标准化，大家通常使用默认的端口号。<br>
+(2)常见的协议和端口示例<br>
+HTTP（80端口）：<br>
+协议：HTTP（Hypertext Transfer Protocol），用于浏览网页。<br>
+端口：80 端口。浏览器通过这个端口访问网页。<br>
+
+
+HTTPS（443端口）：<br>
+协议：HTTPS（Hypertext Transfer Protocol Secure），安全的 HTTP，用于加密的网页浏览。<br>
+端口：443 端口。<br>
+
+
+SSH（22端口）：<br>
+协议：SSH（Secure Shell），用于安全的远程登录和命令执行。<br>
+端口：22 端口。<br>
+
+
+FTP（21端口）：<br>
+协议：FTP（File Transfer Protocol），用于文件传输。<br>
+端口：21 端口。<br>
+
+
+SMTP（25端口）：<br>
+协议：SMTP（Simple Mail Transfer Protocol），用于发送电子邮件。<br>
+端口：25 端口。<br>
