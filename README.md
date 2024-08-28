@@ -51,3 +51,16 @@ GRUB（GRand Unified Bootloader）: 是一个广泛使用的启动加载程序�
 允许普通用户临时以超级用户（root 用户）的身份执行命令。超级用户通常拥有系统上的所有权限，包括对系统文件和设置进行更改的能力。
 ### su
 切换到 root 用户（超级用户），从而获得系统管理员权限。
+
+## Shell
+### What is Shell
+Shell:是一种电脑系统与用户交互的命令行界面（CIL：Command-Line Interface），在图形用户界面（GUI：Graphical User Interface）出现前，它是我们操作电脑的主要方式。
+### Bash Shell
+1. Bash Shell:是一种广泛应用于Unix/Linux操作系统的shell。
+2. Bash Prompt:在使用Bash时的提示符。
+Eg. user@hostname:~$<br>
+user：当前登录的用户名。<br>
+hostname：计算机的主机名。<br>
+~：当前工作目录（在用户的主目录时显示为 ~，否则会显示为相对路径）。<br>
+$：表示普通用户（如果是 #，则表示超级用户 root）。<br>
+
