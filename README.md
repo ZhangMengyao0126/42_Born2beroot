@@ -201,112 +201,178 @@ chage: 是一个用于管理用户密码过期设置的工具。它允许系统�
 
 ### Script
 #### What is Script?
-是一个自动执行的shell命令集合文件。
+是一个自动执行的shell命令集合文件。<br>
+
+#### #！/bin/bash
+#!： 这是一个特殊的字符序列，称为 shebang。它告诉操作系统使用指定的解释器来执行脚本文件中的内容。<br>
+/bin/bash： 这是解释器的路径。在这个例子中，/bin/bash 指定了脚本应由 Bash 解释器来执行。<br>
 
 #### 获取架构信息  arch=$(uname -a)
-使用 uname -a 命令获取系统的架构信息，包括内核版本、主机名等。
-*语法：
-1. arch= 是将 arch 变量赋值的操作。
-2. $(uname -a) 是命令替换的语法，表示将 uname -a 命令的输出结果作为 arch 变量的值。
+使用 uname -a 命令获取系统的架构信息，包括内核版本、主机名等。<br>
+*语法：<br>
+1. arch= 是将 arch 变量赋值的操作。<br>
+2. $(uname -a) 是命令替换的语法，表示将 uname -a 命令的输出结果作为 arch 变量的值。<br>
 
 
-#### 获取物理和虚拟CPU 核心数量  cpuf=$(grep "physical id" /proc/cpuinfo | wc -l)    cpuv=$(grep "processor" /proc/cpuinfo | wc -l)
-1. grep "physical id" /proc/cpuinfo:
-grep 是一个用于搜索文本的工具。
-"physical id" 是我们要搜索的模式，它是 grep 要在 /proc/cpuinfo 文件中查找的字符串。
-/proc/cpuinfo 是一个虚拟文件，包含了关于 CPU 的各种信息。每个物理 CPU 核心的信息通常包含 "physical id"。
-2. | (管道符)
-管道符将前一个命令的输出传递给下一个命令。
-在这里，grep 命令的输出（即所有包含 "physical id" 的行）被传递给 wc -l 命令。
-3. wc -l
-wc 是一个用于计算文本文件中行数、字数和字符数的工具。
--l 选项表示计算行数。
-因此，wc -l 会计算 grep 命令输出的行数，即包含 "physical id" 的行数。
-4. cpuf=$(...)
-$(...) 是命令替换的语法，用于执行括号中的命令并将其输出结果赋值给变量 cpuf。
+#### 获取物理和虚拟CPU 核心数量
+#### cpuf=$(grep "physical id" /proc/cpuinfo | wc -l)
+#### cpuv=$(grep "processor" /proc/cpuinfo | wc -l)
+1. grep "physical id" /proc/cpuinfo
+grep: global regular expression print, 是一个用于搜索文本的工具。<br>
+"physical id" 是我们要搜索的模式，它是 grep 要在 /proc/cpuinfo 文件中查找的字符串。每个物理 CPU 核心的信息通常包含 "physical id"。<br>
+/proc/cpuinfo 是一个虚拟文件，包含了关于 CPU 的各种信息。<br>
+2. grep "processor" /proc/cpuinfo 
+processor："processor" 是我们要搜索的模式，它是 grep 要在 /proc/cpuinfo 文件中查找的字符串。processor条目反映了操作系统看到的逻辑 CPU 数量。每个条目代表一个系统可以调度的逻辑处理单元，不管它是物理 CPU 核心还是通过超线程技术（一个物理cpu跑两个线程）创建的虚拟 CPU。<br>
+3. | (管道符)
+管道符将前一个命令的输出传递给下一个命令。<br>
+在这里，grep 命令的输出（即所有包含 "physical id" 的行）被传递给 wc -l 命令。<br>
+4. wc -l
+wc：wordcount，是一个用于计算文本文件中行数、字数和字符数的工具。<br>
+-l: --lines，选项表示计算行数。<br>
+因此，wc -l 会计算 grep 命令输出的行数，即包含 "physical id" 的行数。<br>
+5. cpuf=$(...)
+$(...) 是命令替换的语法，用于执行括号中的命令并将其输出结果赋值给变量 cpuf。<br>
 **实际效果**
-grep "physical id" /proc/cpuinfo 会输出所有包含 "physical id" 的行。这些行代表了每个物理 CPU 核心的一个条目。
-wc -l 会计算这些行的总数，这个数量表示物理 CPU 核心的数量。
-获取内存使用情况：
+grep "physical id" /proc/cpuinfo 会输出所有包含 "physical id" 的行。这些行代表了每个物理 CPU 核心的一个条目。<br>
+wc -l 会计算这些行的总数，这个数量表示物理 CPU 核心的数量。<br>
 
-bash
-复制代码
-ram_total=$(free --mega | awk '$1 == "Mem:" {print $2}')
-ram_use=$(free --mega | awk '$1 == "Mem:" {print $3}')
-ram_percent=$(free --mega | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}')
-总内存 (ram_total) 和已用内存 (ram_use)，单位为 MB。
-内存使用百分比 (ram_percent)。
-获取磁盘使用情况：
+#### 获取内存使用情况
+#### ram_total=$(free --mega | awk '$1 == "Mem:" {print $2}')
+#### ram_use=$(free --mega | awk '$1 == "Mem:" {print $3}')
+#### ram_use=$(free --mega | awk '$1 == "Mem:" {printf("%.2f%%"), $3/$2*100}')
+1. free --mega
+free: 是一个命令行工具，用于显示系统的内存使用情况。
+--mega: 表示输出的内存信息以 MB（兆字节）为单位显示。
+2. |（管道符）
+将 free --mega 命令的输出传递给 awk 命令。
+3. awk '$1 == "Mem:" {print $2}':
+awk: Aho, Weinberger, 和 Kernighan（三个创始人的名字），是一个强大的文本处理工具，用于对文本中的数据进行模式匹配和操作。
+$1 == "Mem:" 表示匹配第一列（字段）为 "Mem:" 的行。
+{print $2} 表示输出该行的第二列的值，也就是总内存(ram_total)的大小。
+{print $3} 表示输出该行的第三列的值，也就是已用内存(ram_use)的大小。
+4. {printf("%.2f%%"), $3/$2*100}<br>
+printf：这是 awk 中的格式化输出函数，类似于 C 语言中的 printf。<br>
 
-bash
-复制代码
-disk_total=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_t += $2} END {printf ("%.1fGb\n"), disk_t/1024}')
-disk_use=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_u += $3} END {print disk_u}')
-disk_percent=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_u += $3} {disk_t+= $2} END {printf("%d"), disk_u/disk_t*100}')
-总磁盘空间 (disk_total)，排除 /boot 分区。
-已用磁盘空间 (disk_use)。
-磁盘使用百分比 (disk_percent)。
-获取 CPU 负载：
 
-bash
-复制代码
-cpul=$(vmstat 1 2 | tail -1 | awk '{printf $15}')
-cpu_op=$(expr 100 - $cpul)
-cpu_fin=$(printf "%.1f" $cpu_op)
-使用 vmstat 命令获取 CPU 空闲百分比 (cpul)。
-计算 CPU 负载 (cpu_fin)。
-获取系统最后启动时间：
+"%.2f%%"：
+%：标识符，表示这个地方将插入一个变量的值。<br>
+.2f：格式说明符，表示输出一个浮点数，保留两位小数。<br>
+%%：表示输出一个百分号 %。在格式字符串中，%% 是转义字符，用来表示实际的百分号。<br>
 
-bash
-复制代码
-lb=$(who -b | awk '$1 == "system" {print $3 " " $4}')
-使用 who -b 获取系统最后启动的日期和时间。
-检查是否使用 LVM：
 
-bash
-复制代码
-lvmu=$(if [ $(lsblk | grep "lvm" | wc -l) -gt 0 ]; then echo yes; else echo no; fi)
-使用 lsblk 检查是否存在 LVM (逻辑卷管理器) 设备。
-获取 TCP 连接数：
+$3/$2*100：<br>
+$2：在 awk 中，$2 表示当前行的第二列。对于 free 命令输出的内存信息，第二列通常代表 总内存（Total Memory）。<br>
+$3：$3 表示当前行的第三列，通常代表 已用内存（Used Memory）。<br>
+$3/$2：表示已用内存占总内存的比例。<br>
+$3/$2*100：将上一步的比例乘以 100，以得到一个百分比值，表示已用**内存占总内存的百分比**。<br>
 
-bash
-复制代码
-tcpc=$(ss -ta | grep ESTAB | wc -l)
-使用 ss 命令获取 ESTABLISHED 状态的 TCP 连接数。
-获取当前登录用户数：
+5. ram_total=$(...)
+$(...) 是命令替换的语法，将 awk 命令的输出结果赋值给变量 ram_total。
 
-bash
-复制代码
-ulog=$(users | wc -w)
-使用 users 命令获取当前登录的用户数。
-获取网络信息：
+#### 获取磁盘使用情况
+####  disk_total=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_t += $2} END {printf ("%.1fGb\n"), disk_t/1024}')
+####  disk_use=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_u += $3} END {print disk_u}')
+####  disk_percent=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_u += $3} {disk_t+= $2} END {printf("%d"), disk_u/disk_t*100}')
+1. df -m<br>
+df: disk free, 是显示文件系统磁盘空间使用情况的命令。<br>
+-m: --mega, 表示以 MB 为单位显示。<br>
+2. grep "/dev/"<br>
+grep: 用于在 df 的输出中筛选出包含 /dev/ 的行，这些行通常表示挂载的磁盘分区。<br>
+grep -v "/boot"：<br>
+grep -v : --invert-match, 用于排除包含 /boot 的行，确保不包含 /boot 分区的统计。<br>
+*排除 /boot 分区通常是因为 /boot 分区是系统专用的、较小的独立分区，主要用于存放引导加载程序（如 GRUB）和内核映像。它在系统启动过程中发挥关键作用，但对日常使用来说，其磁盘空间使用情况通常不太重要，且容量很小，不会对整体磁盘使用统计产生显著影响。<br>
+3. awk '{disk_t += $2} END {printf ("%.1fGb\n"), disk_t/1024}'<br>
+awk: 是一个强大的文本处理工具。<br>
+disk_t += $2: 累积每个匹配行的第二列（即分区的总大小）。<br>
+END {printf ("%.1fGb\n"), disk_t/1024}: 表示在所有行处理完毕后，将累积的磁盘总大小（disk_t）除以 1024（将 MB 转换为 GB），并格式化为小数点后一位的数字后加上 "Gb" 输出。<br>
+最终结果：disk_total 保存的是系统中 /dev/ 下所有磁盘分区的总大小（不包括 /boot），以 GB 为单位。<br>
+4.awk '{disk_u += $3} END {print disk_u}')：
+disk_u += $3: 累积每个匹配行的第三列（即已用空间的总大小）。<br>
+最终结果：disk_use 保存的是系统中 /dev/ 下所有磁盘分区的已用空间，以 MB 为单位。<br>
+5.awk '{disk_u += $3} {disk_t+= $2} END {printf("%d"), disk_u/disk_t*100}')<br>
+最终结果：disk_percent 保存的是系统中 /dev/ 下所有磁盘分区的使用百分比。<br>
 
-bash
-复制代码
-ip=$(hostname -I)
-mac=$(ip link | grep "link/ether" | awk '{print $2}')
-使用 hostname -I 获取 IP 地址。
-使用 ip link 获取 MAC 地址。
-获取 sudo 命令使用次数：
+#### 获取 CPU 负载
+#### cpul=$(vmstat 1 2 | tail -1 | awk '{printf $15}')
+#### cpu_op=$(expr 100 - $cpul)
+#### cpu_fin=$(printf "%.1f" $cpu_op)
+1. vmstat 1 2：<br>
+vmstat: 是一个显示系统内存、进程、CPU 活动等的工具。<br>
+1 2: 表示 vmstat 将每秒输出一次数据，总共输出两次。第二次输出包含了完整的统计数据。<br>
+*为什么我们需要输出两次：当你运行 vmstat 时，第一次输出通常是初始的统计信息，不一定能反映系统当前的实时状态。这是因为在采集和报告系统性能数据时，数据需要一定的时间来稳定。<br>
+tail -1： 从 vmstat 的输出中取最后一行。这一行包含了最新的统计数据。<br>
+2. awk '{printf $15}'：<br>
+awk : 用于从最后一行中提取第 15 列数据，通常这列代表 CPU 空闲时间的百分比（在不同的 vmstat 版本中，列的位置可能有所不同）。<br>
+printf:  用于格式化输出，实际上在这里 printf 只是将 $15 的值直接输出，没有格式化作用。<br>
+3. expr 100 - $cpul：<br>
+expr：expression, 是一个用于计算表达式的工具。<br>
+100 - $cpul： 计算 CPU 的空闲时间百分比与 100 的差值，得到 CPU 的使用率。<br>
+4. printf "%.1f"：<br>
+printf: 用于格式化输出。<br>
+"%.1f": 表示将 $cpu_op 格式化为保留一位小数的浮点数。<br>
 
-bash
-复制代码
-cmnd=$(journalctl _COMM=sudo | grep COMMAND | wc -l)
-使用 journalctl 命令统计 sudo 命令的执行次数。
-显示系统信息：
+#### 获取系统最后启动时间    lb=$(who -b | awk '$1 == "system" {print $3 " " $4}')
+1. who -b<br>
+who -b： --boot, 输出系统的最后启动时间信息。<br>
+2. awk '$1 == "system" {print $3 " " $4}'<br>
+$1 == "system"： 表示匹配第一列（字段）为 "system" 的行。<br>
+{print $3 " " $4}： 如果条件满足，打印第三列和第四列的内容，即启动日期和时间。<br>
 
-bash
-复制代码
-wall "	Architecture: $arch
-CPU physical: $cpuf
-vCPU: $cpuv
-Memory Usage: $ram_use/${ram_total}MB ($ram_percent%)
-Disk Usage: $disk_use/${disk_total} ($disk_percent%)
-CPU load: $cpu_fin%
-Last boot: $lb
-LVM use: $lvmu
-Connections TCP: $tcpc ESTABLISHED
-User log: $ulog
-Network: IP $ip ($mac)
-Sudo: $cmnd cmd"
-使用 wall 命令将所有收集的信息显示在所有登录用户的终端上。
+#### 检查系统中是否存在lvm设备
+#### if [ $(lsblk | grep "lvm" | wc -l) -gt 0 ]; then
+####    echo yes
+#### else
+####    echo no
+#### fi
+1. lsblk<br>
+列出系统中所有的块设备（如硬盘、分区等）。它显示设备的名称、大小、类型等信息。<br>
+2. grep "lvm"<br>
+grep "lvm"：在 lsblk 的输出中查找包含 "lvm" 的行。LVM 相关的设备通常在 lsblk 输出中标记为 "lvm"。<br>
+3. wc -l<br>
+wc -l：计算行数。这里，它用于计算 grep "lvm" 命令找到的行数。即，计算系统中 LVM 设备的数量。<br>
+4. -gt 0：--greater-than，测试lsblk 输出中包含 "lvm" 的行数是否大于 0。<br>
+5. then：如果条件为真（即 LVM 设备的数量大于 0），则执行 then 后面的命令。<br>
+6. else：如果条件为假，则执行 else 后面的命令。<br>
+7. f获取网络状态和统计信息i：结束 if 语句块的标记。<br>
+
+#### 获取当前处于 ESTABLISHED 状态的 TCP 连接数    tcpc=$(ss -ta | grep ESTAB | wc -l)
+1. TCP链接<br>
+TCP：Transmission Control Protocol。是两个网络端点（如计算机或服务器）之间建立的一种连接，用于数据的双向传输。每个连接都有一个唯一的标识符，由源 IP 地址、源端口号、目标 IP 地址和目标端口号共同组成。<br>
+2. ss -ta<br>
+ss：显示套接字（socket）统计信息。<br>
+-t：显示 TCP 套接字的信息。<br>
+-a：显示所有的套接字，包括监听和非监听状态。<br>
+3. grep ESTAB<br>
+grep ESTAB：在 ss -ta 的输出中查找包含 "ESTAB" 的行,即 "ESTABLISHED"（已建立）。这是一个 TCP 连接状态，表示连接已成功建立并处于活动状态。<br>
+4. wc -l<br>
+wc -l：计算行数。这里，它用于计算grep ESTAB命令找到的行数。即，当前处于 ESTABLISHED 状态的 TCP 连接数。<br>
+
+#### 获取当前登录用户数    ulog=$(users | wc -w)
+1.  users<br>
+users: 显示当前登录系统的所有用户的用户名。它以空格分隔用户名，表示每个登录的用户。<br>
+Eg. alice bob charlie<br>
+2. wc -w<br>
+wc -w：word count --words， 统计输入中的单词数量。<br>
+
+#### 获取网络信息
+#### ip=$(hostname -I)
+#### mac=$(ip link | grep "link/ether" | awk '{print $2}')
+1. hostname -I<br>
+hostname： 这是一个用于显示系统的主机名的命令。<br>
+-I： 这是 hostname 命令的一个选项，用于显示所有网络接口的 IP 地址，多个地址用空格分隔。如果系统有多个网络接口，这个选项会列出所有分配给接口的 IP 地址。<br>
+2. ip link<br>
+ip link：是 ip 命令的一部分，用于显示网络接口的详细信息，包括接口的名称、状态、MAC 地址等。<br>
+3. grep "link/ether"<br>
+grep "link/ether"：从 ip link 命令的输出中筛选出包含 "link/ether" 的行。这个字段表示网络接口的 MAC 地址。<br>
+4. awk '{print $2}'<br>
+'{print $2}'：指定 awk 从每行的第二个字段打印内容。在这个上下文中，第二个字段是 MAC 地址。<br>
+*IP Adress: Internet Protocol Address， 是一个数字标签，用于在网络上唯一标识每一个设备。它有两个主要版本：IPv4 和 IPv6。IPv4：由四个十进制数（每个数在0到255之间）组成，如 192.168.1.1。IPv6：由八组十六进制数（每组由四个十六进制数字组成）和冒号分隔符组成，如 2001:0db8:85a3:0000:0000:8a2e:0370:7334。<br>
+*MAC Adress: Media Access Control Address， MAC 地址 是网络接口卡（NIC）或网络适配器的唯一硬件地址。它通常由制造商在硬件中预设，用于网络层上的唯一标识。它的格式为六组两位十六进制数字（例如 00:1A:2B:3C:4D:5E）。<br>
+
+#### 获取 sudo 命令使用次数    cmnd=$(journalctl _COMM=sudo | grep COMMAND | wc -l)
+1. journalctl _COMM=sudo<br>
+journalctl：journal control, 用于查看和查询系统日志的命令，通常用于访问 systemd 日志。<br>
+_COMM=sudo：command=sudo，这是 journalctl 的一个过滤器，表示只显示 sudo 命令产生的日志条目。_COMM 是一个字段，表示命令名称。<br>
+
+#### 将所有收集的信息显示在所有登录用户的终端上
+wall“……”： 这个命令用于向所有登录用户发送广播消息。它通常用于在系统上向所有用户显示一条消息。<br>
