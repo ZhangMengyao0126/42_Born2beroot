@@ -221,7 +221,7 @@ uname -a 的输出信息.
 #### cpuf=$(grep "physical id" /proc/cpuinfo | wc -l)
 #### cpuv=$(grep "processor" /proc/cpuinfo | wc -l)
 1. grep "physical id" /proc/cpuinfo
-grep: global regular expression print, 是一个用于搜索文本的工具。<br>
+grep: globally search a regular expression and print, 是一个用于搜索文本的工具。<br>
 "physical id" 是我们要搜索的模式，它是 grep 要在 /proc/cpuinfo 文件中查找的字符串。每个物理 CPU 核心的信息通常包含 "physical id"。<br>
 /proc/cpuinfo 是一个虚拟文件，包含了关于 CPU 的各种信息。<br>
 2. grep "processor" /proc/cpuinfo 
@@ -242,7 +242,7 @@ wc -l 会计算这些行的总数，这个数量表示物理 CPU 核心的数量
 #### 获取内存使用情况
 #### ram_total=$(free --mega | awk '$1 == "Mem:" {print $2}')
 #### ram_use=$(free --mega | awk '$1 == "Mem:" {print $3}')
-#### ram_use=$(free --mega | awk '$1 == "Mem:" {printf("%.2f%%"), $3/$2*100}')
+#### ram_percent=$(free --mega | awk '$1 == "Mem:" {printf("%.2f%%"), $3/$2*100}')
 1. free --mega
 free: 是一个命令行工具，用于显示系统的内存使用情况。
 --mega: 表示输出的内存信息以 MB（兆字节）为单位显示。
