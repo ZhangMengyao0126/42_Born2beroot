@@ -143,7 +143,7 @@ log: 创建 /var/log/sudo 目录并不是强制性的要求，而是一种良好
 解释：启用对 sudo 命令的输入和输出进行日志记录。log_input 记录命令输入的内容，log_output 记录命令输出的内容。<br>
 用途：记录所有 sudo 命令的输入和输出，有助于审计和监控系统的活动。<br>
 #### Defaults iolog_dir="/var/log/sudo"
-解释：指定日志目录的位置，用于存放 sudo 命令的输入和输出日志。在此例中，日志文件将存储在 /var/log/sudo 目录中。<br>
+解释：I/O Log Data Recorder，指定日志目录的位置，用于存放 sudo 命令的输入和输出日志。在此例中，日志文件将存储在 /var/log/sudo 目录中。<br>
 用途：组织和存储 sudo 的输入和输出日志，以便于管理和查找日志文件。<br>
 #### Defaults requiretty
 解释：要求 sudo 命令在一个实际的终端（tty:teletypewriter)上运行。这意味着 sudo 需要一个终端环境来执行命令，不能在后台脚本或无终端环境中运行。<br>
