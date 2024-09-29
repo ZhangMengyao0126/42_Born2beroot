@@ -24,17 +24,14 @@ Note: Modern computers usually have multiple CPUs, and setting the CPU count det
 3. RAM (Random Access Memory)
 RAM is the CPU's working area, which is used to temporarily store the operating system, applications, and data currently in use. When a program ends or the device loses power, the RAM will be cleared.<br>
 Note: When creating a virtual machine, setting RAM is equivalent to setting Base Memory.<br>
-
 RAM Hardware:<br>
 RAM Modules: RAM is typically packaged in modules known as DIMMs (Dual Inline Memory Modules) for desktops and SO-DIMMs (Small Outline DIMMs) for laptops. These modules contain multiple RAM chips mounted on a circuit board.<br>
-
 RAM Chips:<br>
 Each RAM module contains several chips, often made of silicon. These chips are the actual memory cells that store data. Common types include:<br>
 DRAM (Dynamic RAM): Requires periodic refreshing to maintain data.<br>
 SRAM (Static RAM): Faster and more reliable but more expensive; used in cache memory.<br>
 
-
-HDD (Hard Disk Drive): The hard disk is the archive for the CPU, used for long-term storage of the operating system, applications, and data.
+3. HDD (Hard Disk Drive): The hard disk is the archive for the CPU, used for long-term storage of the operating system, applications, and data.
 *Hard Disk File: A virtual hard disk file that simulates the function of a physical hard drive for long-term storage of the operating system, applications, and data. Different types are simply due to their suitability for different hypervisor platforms:
 (1) VDI (VirtualBox Disk Image) - Oracle VirtualBox
 (2) VHD (Virtual Hard Disk) - Microsoft Hyper-V
