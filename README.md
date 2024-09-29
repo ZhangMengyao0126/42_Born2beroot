@@ -17,15 +17,30 @@
 <img width="916" alt="image" src="https://github.com/user-attachments/assets/68957fb5-718b-427a-b099-1d7993f7960c">
 
 ## Hardware
-1. CPU(Central Processing Unit):CPU是工人，负责执行计算机程序中的指令，进行数据处理和计算。<br>
-注：现代计算机通常有多个CPU，设置CPU count就是设置分配给虚拟机的CPU数量。<br>
-2. RAM(Random Access Memory)(内存):内存是CPU的工作区，用于暂时存储当前正在使用的操作系统、应用程序和数据。当程序结束或设备断电时，内存将会被清空。<br>
-注：在创建虚拟机时，设置RAM就是设置Base Memory。<br>
-3. HDD（Hard Disk Drive）（硬盘）：硬盘是CPU的档案库，用于长期存储操作系统、应用程序和数据。<br>
-*Hard Disk File: 虚拟硬盘文件，用于模拟一个物理硬盘的功能，用于长期存储操作系统、应用程序和数据。不同的类型只是因为适用于不同的Hypervisor平台：<br>
-(1)VDI (VirtualBox Disk Image) - Oracle VirtualBox
-(2)VHD (Virtual Hard Disk) - Microsoft Hyper-V
-(3)VMDK (Virtual Machine Disk) - Virtual Machine Disk
+1. CPU (Central Processing Unit)
+The CPU is the worker, responsible for executing instructions in computer programs and performing data processing and calculations.<br>
+Note: Modern computers usually have multiple CPUs, and setting the CPU count determines the number of CPUs allocated to the virtual machine.<br>
+
+3. RAM (Random Access Memory)
+RAM is the CPU's working area, which is used to temporarily store the operating system, applications, and data currently in use. When a program ends or the device loses power, the RAM will be cleared.<br>
+Note: When creating a virtual machine, setting RAM is equivalent to setting Base Memory.<br>
+
+RAM Hardware:<br>
+RAM Modules: RAM is typically packaged in modules known as DIMMs (Dual Inline Memory Modules) for desktops and SO-DIMMs (Small Outline DIMMs) for laptops. These modules contain multiple RAM chips mounted on a circuit board.<br>
+
+RAM Chips:<br>
+Each RAM module contains several chips, often made of silicon. These chips are the actual memory cells that store data. Common types include:<br>
+DRAM (Dynamic RAM): Requires periodic refreshing to maintain data.<br>
+SRAM (Static RAM): Faster and more reliable but more expensive; used in cache memory.<br>
+
+
+HDD (Hard Disk Drive): The hard disk is the archive for the CPU, used for long-term storage of the operating system, applications, and data.
+*Hard Disk File: A virtual hard disk file that simulates the function of a physical hard drive for long-term storage of the operating system, applications, and data. Different types are simply due to their suitability for different hypervisor platforms:
+(1) VDI (VirtualBox Disk Image) - Oracle VirtualBox
+(2) VHD (Virtual Hard Disk) - Microsoft Hyper-V
+(3) VMDK (Virtual Machine Disk) - Virtual Machine Disk
+
+
 
 ## Debian
 一款以稳定著称的Linux发行版。Linux发行版，指在Linux内核的基础上构建，添加了各种应用程序、工具和管理工具，形成完整操作系统环境的操作系统版本。<br>
