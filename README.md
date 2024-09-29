@@ -18,12 +18,10 @@
 
 ## Hardware
 1. CPU (Central Processing Unit)
-The CPU is the worker, responsible for executing instructions in computer programs and performing data processing and calculations.<br>
-Note: Modern computers usually have multiple CPUs, and setting the CPU count determines the number of CPUs allocated to the virtual machine.<br>
+The CPU is the worker, responsible for executing instructions in computer programs and performing data processing and calculations.Note: Modern computers usually have multiple CPUs, and setting the CPU count determines the number of CPUs allocated to the virtual machine.<br>
 
 3. RAM (Random Access Memory)
-RAM is the CPU's working area, which is used to temporarily store the operating system, applications, and data currently in use. When a program ends or the device loses power, the RAM will be cleared.<br>
-Note: When creating a virtual machine, setting RAM is equivalent to setting Base Memory.<br>
+RAM is the CPU's working area, which is used to temporarily store the operating system, applications, and data currently in use. When a program ends or the device loses power, the RAM will be cleared. Note: When creating a virtual machine, setting RAM is equivalent to setting Base Memory.<br>
 RAM Hardware:<br>
 RAM Modules: RAM is typically packaged in modules known as DIMMs (Dual Inline Memory Modules) for desktops and SO-DIMMs (Small Outline DIMMs) for laptops. These modules contain multiple RAM chips mounted on a circuit board.<br>
 RAM Chips:<br>
